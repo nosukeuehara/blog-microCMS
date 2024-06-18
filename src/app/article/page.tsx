@@ -18,7 +18,7 @@ export default async function StaticPage() {
         {contents.map((post) => {
           return (
             <li key={post.id}>
-              <Link href={`/static/${post.id}`}>{post.title}</Link>
+              <Link href={`/article/${post.id}`}>{post.title}</Link>
             </li>
           );
         })}
