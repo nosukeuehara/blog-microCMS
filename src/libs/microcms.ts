@@ -18,7 +18,6 @@ export type Category = {
   name: string;
 } & MicroCMSDate;
 
-
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
 }
@@ -39,7 +38,6 @@ export const getList = async (queries?: MicroCMSQueries) => {
     endpoint: "blogs",
     queries,
   });
-
   return listData;
 };
 
@@ -54,16 +52,15 @@ export const getDetail = async (
     queries,
   });
 
-
   return detailData;
 };
 
 // ブログのカテゴリ取得
 export const fetchCategories = async (queries?: MicroCMSQueries) => {
   const categories = await client.getList<Category>({
-    endpoint: 'categories',
+    endpoint: "categories",
     queries,
-  })
+  });
 
-  return categories
+  return categories;
 };
