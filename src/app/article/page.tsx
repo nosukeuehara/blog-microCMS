@@ -24,17 +24,28 @@ export default async function StaticPage() {
                 key={post.id}
                 className="bg-white shadow-md rounded-lg p-6 hover:bg-gray-50 transition duration-300"
               >
-                <Image
-                  src={post.eyecatch!.url}
-                  alt={"image"}
-                  width={500}
-                  height={500}
-                />
                 <Link
                   href={`/article/${post.id}`}
-                  className="text-xl font-semibold text-blue-500 hover:text-blue-700"
+                  className="flex items-center space-x-4 p-4 bg-white shadow"
                 >
-                  {post.title}
+                  <Image
+                    src={post.eyecatch!.url}
+                    alt={"image"}
+                    width={500}
+                    height={500}
+                    className="flex-shrink-0"
+                  />
+                  <div className="text-lg font-semibold">
+                    <div>
+                      {post.title}
+                    </div>
+                    <div>
+                      {post.category.name}
+                    </div>
+                    <div>
+                      {Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(post.createdAt))}
+                    </div>
+                  </div>
                 </Link>
               </li>
             );
