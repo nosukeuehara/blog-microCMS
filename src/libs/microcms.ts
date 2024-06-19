@@ -13,6 +13,12 @@ export type Blog = {
   eyecatch?: MicroCMSImage;
 } & MicroCMSDate;
 
+export type Category = {
+  id: string;
+  name: string;
+} & MicroCMSDate;
+
+
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
 }
@@ -50,4 +56,14 @@ export const getDetail = async (
 
 
   return detailData;
+};
+
+// ブログのカテゴリ取得
+export const fetchCategories = async (queries?: MicroCMSQueries) => {
+  const categories = await client.getList<Category>({
+    endpoint: 'categories',
+    queries,
+  })
+
+  return categories
 };
