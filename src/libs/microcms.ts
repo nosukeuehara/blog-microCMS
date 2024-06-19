@@ -11,6 +11,9 @@ export type Blog = {
   title: string;
   content: string;
   eyecatch?: MicroCMSImage;
+  category: {
+    name: string;
+  };
 } & MicroCMSDate;
 
 export type Category = {
@@ -38,6 +41,7 @@ export const getList = async (queries?: MicroCMSQueries) => {
     endpoint: "blogs",
     queries,
   });
+  console.log(listData);
   return listData;
 };
 
