@@ -1,8 +1,6 @@
-// Layout.tsx
-
-import Navigation from "../components/Navigation";
+import Footer from "../components/footer";
+import Navigation from "../components/navigation";
 import Sidebar from "../components/Sidebar";
-import Footer from "../components/Footer";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
