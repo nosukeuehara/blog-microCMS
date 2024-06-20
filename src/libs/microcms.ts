@@ -41,7 +41,6 @@ export const getList = async (queries?: MicroCMSQueries) => {
     endpoint: "blogs",
     queries,
   });
-  console.log(listData);
   return listData;
 };
 
