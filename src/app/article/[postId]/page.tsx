@@ -1,28 +1,16 @@
 import { notFound } from "next/navigation";
 import parse from "html-react-parser";
-import { getDetail, getList } from "../../../libs/microcms";
+import { Blog } from "../../../libs/microcms";
 
-export async function generateStaticParams() {
-  const { contents } = await getList();
-
-  const paths = contents.map((post) => {
-    return {
-      postId: post.id,
-    };
-  });
-
-  return [...paths];
-}
-
-export default async function StaticDetailPage({
+export default async function DetailPage({
   params: { postId },
 }: {
   params: { postId: string };
 }) {
-  const post = await getDetail(postId);
-
-  // ページの生成された時間を取得
-  const time = new Date().toLocaleString();
+  // const post = await getDetail(postId);
+  const post: Blog = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/blog/${postId}`
+  ).then((data) => data.json());
 
   if (!post) {
     notFound();
@@ -31,7 +19,13 @@ export default async function StaticDetailPage({
   return (
     <div>
       <h1>{post.title}</h1>
-      <h2>{time}</h2>
+      <h2>
+        {Intl.DateTimeFormat("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }).format(new Date(post.createdAt))}
+      </h2>
       <div>{parse(post.content)}</div>
     </div>
   );

@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { getList } from "../../libs/microcms";
+import { Blog, MicroCMSResponse } from "../../libs/microcms";
 import Image from "next/image";
 
 export default async function StaticPage() {
-  const { contents } = await getList();
-
-  // ページの生成された時間を取得
-  const time = new Date().toLocaleString();
+  // const { contents } = await getList();
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blog`);
+  const data: MicroCMSResponse = await response.json();
+  const contents = data.contents;
 
   if (!contents || contents.length === 0) {
     return (
@@ -36,14 +36,14 @@ export default async function StaticPage() {
                     className="flex-shrink-0"
                   />
                   <div className="text-lg font-semibold">
+                    <div>{post.title}</div>
+                    <div>{post.category.name}</div>
                     <div>
-                      {post.title}
-                    </div>
-                    <div>
-                      {post.category.name}
-                    </div>
-                    <div>
-                      {Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(post.createdAt))}
+                      {Intl.DateTimeFormat("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      }).format(new Date(post.createdAt))}
                     </div>
                   </div>
                 </Link>
