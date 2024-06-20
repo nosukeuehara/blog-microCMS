@@ -3,24 +3,10 @@ import React from "react";
 
 const Navigation = () => {
   return (
-    <nav className="bg-gray-900 text-white p-4 shadow-md">
+    <nav className=" text-green-800 p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-2xl font-bold">
           <Link href="/">WonderCloud</Link>
-        </div>
-        <div className="space-x-4">
-          <Link href="/article" className="hover:text-gray-300">
-            Home
-          </Link>
-          <Link href="/about" className="hover:text-gray-300">
-            About
-          </Link>
-          <Link href="/services" className="hover:text-gray-300">
-            Services
-          </Link>
-          <Link href="/contact" className="hover:text-gray-300">
-            Contact
-          </Link>
         </div>
       </div>
     </nav>

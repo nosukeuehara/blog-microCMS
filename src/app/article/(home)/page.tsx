@@ -31,15 +31,17 @@ export default async function StaticPage() {
                   height={200}
                   className="col-span1"
                 />
-                <div className="col-span1 grid-cols-1">
-                  <div>{post.title}</div>
-                  <div>{post.category.name}</div>
-                  <div>
-                    {Intl.DateTimeFormat("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    }).format(new Date(post.createdAt))}
+                <div className="flex flex-col items-center">
+                  <div className=" m-auto">
+                    <div>{post.title}</div>
+                    <div>{post.category.name}</div>
+                    <div>
+                      {Intl.DateTimeFormat("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      }).format(new Date(post.createdAt))}
+                    </div>
                   </div>
                 </div>
               </Link>

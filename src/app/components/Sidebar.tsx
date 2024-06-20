@@ -13,13 +13,12 @@ const Sidebar = async () => {
     );
   }
   return (
-    <div className=" p-4">
-      <h2 className="text-lg font-bold mb-4">Categories</h2>
-      <ul>
+    <div className=" flex flex-col items-center">
+      <ul className=" flex justify-between">
         {categories.map((category) => (
           <li key={category.id} className="mb-2">
-            <a href="#" className="text-blue-600 hover:underline">
-              {category.name}
+            <a href="#" className="text-slate-500 hover:text-slate-700 m-10">
+              {`#${category.name}`}
             </a>
           </li>
         ))}

@@ -1,6 +1,7 @@
-import Navigation from "@/app/components/Navigation";
-import Sidebar from "../../components/Sidebar";
-import Footer from "@/app/components/Footer";
+import Footer from "@/app/components/footer";
+import Navigation from "@/app/components/navigation";
+import Sidebar from "@/app/components/Sidebar";
+
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -8,14 +9,14 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <Navigation />
       <div className="">
         <div className="">
-          <main>{children}</main>
+          <Sidebar />
         </div>
         <div className="">
-          <Sidebar />
+          <main>{children}</main>
         </div>
       </div>
       <Footer />
-    </div>
+    </div >
   );
 };
 
