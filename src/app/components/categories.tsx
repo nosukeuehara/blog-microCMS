@@ -1,6 +1,6 @@
 import { Category } from "@/libs/microcms";
 
-const Sidebar = async () => {
+const Categories = async () => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/api/category`
   );
@@ -17,7 +17,7 @@ const Sidebar = async () => {
       <ul className=" flex justify-between">
         {categories.map((category) => (
           <li key={category.id} className="mb-2">
-            <a href="#" className="text-slate-500 hover:text-slate-700 m-10">
+            <a href="#" className="text-slate-500 hover:text-slate-700 m-3">
               {`#${category.name}`}
             </a>
           </li>
@@ -27,4 +27,4 @@ const Sidebar = async () => {
   );
 };
 
-export default Sidebar;
+export default Categories;

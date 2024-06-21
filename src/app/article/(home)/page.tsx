@@ -16,7 +16,7 @@ export default async function StaticPage() {
 
   return (
     <div className=" flex flex-col items-center">
-      <ul className=" text-center">
+      <ul className=" text-left">
         {contents.map((post) => {
           return (
             <li key={post.id} className=" mb-4 mt-4">
@@ -31,10 +31,10 @@ export default async function StaticPage() {
                   height={200}
                   className="col-span1"
                 />
-                <div className="flex flex-col items-center">
-                  <div className=" m-auto">
-                    <div>{post.title}</div>
-                    <div>{post.category.name}</div>
+                <div className="">
+                  <div className="">
+                    <div className=" text-lg font-bold">{post.title}</div>
+                    <div className=" text-sm">{`#${post.category.name}`}</div>
                     <div>
                       {Intl.DateTimeFormat("en-US", {
                         year: "numeric",

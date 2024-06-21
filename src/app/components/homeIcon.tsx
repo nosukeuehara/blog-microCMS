@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const Navigation = () => {
+const HomeIcon = () => {
   return (
     <nav className=" text-green-800 p-4">
       <div className="container mx-auto flex justify-between items-center">
@@ -13,4 +13,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default HomeIcon;

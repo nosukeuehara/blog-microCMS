@@ -1,22 +1,23 @@
+import Categories from "@/app/components/categories";
 import Footer from "@/app/components/footer";
-import Navigation from "@/app/components/navigation";
-import Sidebar from "@/app/components/Sidebar";
-
+import HomeIcon from "@/app/components/homeIcon";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div>
-      <Navigation />
-      <div className="">
-        <div className="">
-          <Sidebar />
+    <div className="min-h-screen flex flex-col">
+      <HomeIcon />
+      <div className="flex-1 flex flex-col">
+        <div className=" text-center">
+          <Categories />
         </div>
-        <div className="">
+        <div className="flex-1">
           <main>{children}</main>
         </div>
       </div>
-      <Footer />
-    </div >
+      <div className="">
+        <Footer />
+      </div>
+    </div>
   );
 };
 
