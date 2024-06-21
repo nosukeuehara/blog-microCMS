@@ -1,13 +1,18 @@
 import Link from "next/link";
 import React from "react";
+import Image from "next/image";
+
+interface HomeIconProps {
+  src: string
+}
 
 const HomeIcon = () => {
   return (
-    <nav className=" text-green-800 p-4">
+    <nav>
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-2xl font-bold">
-          <Link href="/">WonderCloud</Link>
-        </div>
+        <Link href="/" className=" flex font-bold text-lg text-blue-700 p-4">
+          Wonder Cloud
+        </Link>
       </div>
     </nav>
   );
