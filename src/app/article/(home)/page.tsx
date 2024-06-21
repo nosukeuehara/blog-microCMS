@@ -1,17 +1,14 @@
-import Link from "next/link";
-import { Blog, MicroCMSResponse } from "../../../libs/microcms";
+import { Blog, getList } from "@/libs/microcms";
 import Image from "next/image";
+import Link from "next/link";
+
+export const revalidate = 10;
 
 export default async function StaticPage() {
-  // const { contents } = await getList();
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blog`);
-  const data: MicroCMSResponse = await response.json();
-  const contents = data.contents;
+  const { contents } = await getList<Blog>("blogs");
 
   if (!contents || contents.length === 0) {
-    return (
-      <h1 className="text-center text-xl font-semibold mt-8">No contents</h1>
-    );
+    return <h1>No contents</h1>;
   }
 
   return (
@@ -34,7 +31,7 @@ export default async function StaticPage() {
                 <div className="">
                   <div className="">
                     <div className=" text-lg font-bold">{post.title}</div>
-                    <div className=" text-sm">{`#${post.category.name}`}</div>
+                    <div className=" text-sm">{`#${post.category}`}</div>
                     <div>
                       {Intl.DateTimeFormat("en-US", {
                         year: "numeric",

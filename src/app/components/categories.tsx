@@ -1,11 +1,8 @@
-import { Category } from "@/libs/microcms";
+import { Category, getList } from "@/libs/microcms";
 
 const Categories = async () => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/category`
-  );
-  const data = await response.json();
-  const categories: Category[] = data.contents;
+  const { contents } = await getList<Category>("categories");
+  const categories: Category[] = contents;
 
   if (!categories || categories.length === 0) {
     return (

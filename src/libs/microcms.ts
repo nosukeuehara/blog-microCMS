@@ -40,34 +40,35 @@ export const client = createClient({
 });
 
 // ブログ一覧を取得
-// export const getList = async (queries?: MicroCMSQueries) => {
-//   const listData = await client.getList<Blog>({
-//     endpoint: "blogs",
-//     queries,
-//   });
-//   return listData;
-// };
+export async function getList<T>(endpoint: string, queries?: MicroCMSQueries) {
+  const listData = await client.getList<T>({
+    endpoint,
+    queries,
+  });
+  return listData;
+};
 
 // ブログの詳細を取得
-// export const getDetail = async (
-//   contentId: string,
-//   queries?: MicroCMSQueries
-// ) => {
-//   const detailData = await client.getListDetail<Blog>({
-//     endpoint: "blogs",
-//     contentId,
-//     queries,
-//   });
+export async function getDetail<T>(
+  endpoint: string,
+  contentId: string,
+  queries?: MicroCMSQueries,
+) {
+  const detailData = await client.getListDetail<T>({
+    endpoint,
+    contentId,
+    queries,
+  });
 
-//   return detailData;
-// };
+  return detailData;
+};
 
 // ブログのカテゴリ取得
-// export const fetchCategories = async (queries?: MicroCMSQueries) => {
-//   const categories = await client.getList<Category>({
-//     endpoint: "categories",
-//     queries,
-//   });
+export async function fetchCategories(queries?: MicroCMSQueries) {
+  const categories = await client.getList<Category>({
+    endpoint: "categories",
+    queries,
+  });
 
-//   return categories;
-// };
+  return categories;
+};
