@@ -16,12 +16,11 @@ const Categories = async ({ categoryId }: { categoryId?: string }) => {
         {categories.map((category) => (
           <li key={category.id} className="mb-2">
             <Link
-              href={`/article/category/${category.id}`}
-              className={`${
-                categoryId === category.id
-                  ? " font-bold text-slate-500 hover:text-slate-600 m-3"
-                  : ""
-              }text-slate-500 hover:text-slate-600 m-3`}
+              href={`/home/category/${category.id}`}
+              className={`${categoryId === category.id
+                ? " font-bold text-slate-500 hover:text-slate-600 m-3"
+                : ""
+                }text-slate-500 hover:text-slate-600 m-3`}
             >
               {`#${category.name}`}
             </Link>
