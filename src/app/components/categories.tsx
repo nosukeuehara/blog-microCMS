@@ -1,7 +1,8 @@
-import { Category, getList } from "@/libs/microcms";
+import { Category, fetchCategories } from "@/libs/microcms";
+import Link from "next/link";
 
-const Categories = async () => {
-  const { contents } = await getList<Category>("categories");
+const Categories = async ({ categoryId }: { categoryId?: string }) => {
+  const { contents } = await fetchCategories();
   const categories: Category[] = contents;
 
   if (!categories || categories.length === 0) {
@@ -14,9 +15,16 @@ const Categories = async () => {
       <ul className=" flex justify-between">
         {categories.map((category) => (
           <li key={category.id} className="mb-2">
-            <a href="#" className="text-slate-500 hover:text-slate-700 m-3">
+            <Link
+              href={`/article/category/${category.id}`}
+              className={`${
+                categoryId === category.id
+                  ? " font-bold text-slate-500 hover:text-slate-600 m-3"
+                  : ""
+              }text-slate-500 hover:text-slate-600 m-3`}
+            >
               {`#${category.name}`}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
