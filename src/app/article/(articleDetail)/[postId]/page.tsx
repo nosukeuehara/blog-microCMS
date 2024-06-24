@@ -29,16 +29,20 @@ export default async function StaticDetailPage({
   }
 
   return (
-    <div>
-      <h1>{post.title}</h1>
-      <h2>
-        {Intl.DateTimeFormat("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        }).format(new Date(post.createdAt))}
-      </h2>
-      <div>{parse(post.content)}</div>
+    <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="mb-6">
+        <h1 className="text-5xl font-sans text-center mt-3 font-bold">
+          {post.title}
+        </h1>
+        <p className="text-center text-gray-500 mt-2">
+          {Intl.DateTimeFormat("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          }).format(new Date(post.createdAt))}
+        </p>
+      </div>
+      <div className="prose prose-lg max-w-none">{parse(post.content)}</div>
     </div>
   );
 }
