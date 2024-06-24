@@ -10,6 +10,7 @@ function SearchField() {
   const [articles, setArticles] = useState<Blog[] | undefined>();
   const [target, setTarget] = useState<Blog[] | undefined>();
   const [query, setQuery] = useState<string | undefined>("");
+  const [modalOpen, setModalState] = useState<boolean>(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,18 +24,24 @@ function SearchField() {
     fetchData();
   }, []);
 
-  const handleSerchArticles: ChangeEventHandler<HTMLInputElement> = (e) => {
+  const handleSearchArticles: ChangeEventHandler<HTMLInputElement> = (e) => {
     if (e.target.value === "") {
       setQuery("");
       setTarget(undefined);
+      setModalState(false)
     } else {
       setQuery(e.target.value);
       const targetArticles = articles?.filter((article) => {
         return parseContent(article.content).includes(e.target.value);
       });
+      setModalState(true)
       setTarget(targetArticles);
     }
   };
+
+  const toggleModalHandler = () => {
+    setModalState(!modalOpen)
+  }
 
   return (
     <div className=" py-3">
@@ -42,17 +49,20 @@ function SearchField() {
         <input
           type="text"
           value={query}
-          onChange={(e) => handleSerchArticles(e)}
+          onChange={(e) => {
+            handleSearchArticles(e)
+          }}
           placeholder="Search"
           className=" px-5 focus:outline-none focus:ring-2 focus:ring-blue-700 rounded-full w-36 h-8 bg-slate-200 text-sm"
         />
       </div>
       {target !== undefined ? (
-        <Modal>
-          <SuggestList keywords={target} />
+        <Modal modalOpen={modalOpen} >
+          <SuggestList toggleModal={toggleModalHandler} keywords={target} />
         </Modal>
-      ) : null}
-    </div>
+      ) : null
+      }
+    </div >
   );
 }
 

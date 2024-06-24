@@ -1,9 +1,10 @@
 import { Blog } from "@/libs/microcms";
 import { parseContent } from "@/util/parseString";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 interface SuggestListProps {
+  toggleModal: () => void,
   keywords: Blog[];
 }
 
@@ -19,9 +20,12 @@ const SuggestList = (props: SuggestListProps) => {
                 className=" bg-slate-100 shadow-2xl rounded-md px-3 py-2 m-1"
               >
                 <Link
-                  href={`/article/${item.id}`}
+                  href={`/home/${item.id}`}
                   key={item.id}
                   className=" shadow-2xl rounded-md "
+                  onClick={() => {
+                    props.toggleModal()
+                  }}
                 >
                   <span className=" text-sm">
                     <p className=" font-medium text-slate-900">{item.title}</p>
