@@ -72,3 +72,11 @@ export async function fetchCategories(queries?: MicroCMSQueries) {
 
   return categories;
 };
+
+export async function filterCategories(categoryId: string) {
+  const { contents } = await fetch(
+    `https://${process.env.MICROCMS_SERVICE_DOMAIN!}.microcms.io/api/v1/blogs?filters=category[equals]${categoryId}`,
+    { headers: { 'X-MICROCMS-API-KEY': process.env.MICROCMS_API_KEY! } }
+  ).then(result => result.json())
+  return contents
+}
