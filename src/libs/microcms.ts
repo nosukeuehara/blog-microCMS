@@ -13,6 +13,7 @@ export type Blog = {
   eyecatch?: MicroCMSImage;
   category: {
     name: string;
+    id: string;
   };
 } & MicroCMSDate;
 
@@ -22,7 +23,7 @@ export type Category = {
 } & MicroCMSDate;
 
 export interface MicroCMSResponse {
-  contents: Blog[]
+  contents: Blog[];
 }
 
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
@@ -46,13 +47,13 @@ export async function getList<T>(endpoint: string, queries?: MicroCMSQueries) {
     queries,
   });
   return listData;
-};
+}
 
 // ブログの詳細を取得
 export async function getDetail<T>(
   endpoint: string,
   contentId: string,
-  queries?: MicroCMSQueries,
+  queries?: MicroCMSQueries
 ) {
   const detailData = await client.getListDetail<T>({
     endpoint,
@@ -61,7 +62,7 @@ export async function getDetail<T>(
   });
 
   return detailData;
-};
+}
 
 // ブログのカテゴリ取得
 export async function fetchCategories(queries?: MicroCMSQueries) {
@@ -71,12 +72,13 @@ export async function fetchCategories(queries?: MicroCMSQueries) {
   });
 
   return categories;
-};
+}
 
 export async function filterCategories(categoryId: string) {
   const { contents } = await fetch(
-    `https://${process.env.MICROCMS_SERVICE_DOMAIN!}.microcms.io/api/v1/blogs?filters=category[equals]${categoryId}`,
-    { headers: { 'X-MICROCMS-API-KEY': process.env.MICROCMS_API_KEY! } }
-  ).then(result => result.json())
-  return contents
+    `https://${process.env
+      .MICROCMS_SERVICE_DOMAIN!}.microcms.io/api/v1/blogs?filters=category[equals]${categoryId}`,
+    { headers: { "X-MICROCMS-API-KEY": process.env.MICROCMS_API_KEY! } }
+  ).then((result) => result.json());
+  return contents;
 }

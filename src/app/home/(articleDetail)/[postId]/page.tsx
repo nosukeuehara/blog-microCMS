@@ -1,6 +1,7 @@
 import { Blog, getDetail, getList } from "@/libs/microcms";
 import { notFound } from "next/navigation";
 import parse from "html-react-parser";
+import Categories from "@/app/components/Categories";
 
 export async function generateStaticParams() {
   const { contents } = await getList<Blog>("blogs");

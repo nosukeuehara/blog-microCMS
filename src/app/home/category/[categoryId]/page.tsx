@@ -5,8 +5,8 @@ import {
   getDetail,
   getList,
 } from "@/libs/microcms";
-import { notFound } from "next/navigation";
 import ArticleCard from "@/app/components/ArticleCard";
+import Categories from "@/app/components/Categories";
 
 export const revalidate = 10;
 
@@ -31,10 +31,20 @@ export default async function StaticDetailPage({
   const contents: Blog[] = await filterCategories(categoryId);
 
   if (contents.length === 0) {
-    return <div className=" flex justify-center items-center">no articles</div>;
+    return (
+      <div className=" flex flex-col items-center">
+        <div className="text-center mb-4">
+          <Categories categoryId={categoryId} />
+        </div>
+        <div className=" flex justify-center items-center">no articles</div>
+      </div>
+    )
   } else {
     return (
       <div className=" flex flex-col items-center">
+        <div className="text-center mb-4">
+          <Categories categoryId={categoryId} />
+        </div>
         <ul className=" text-left">
           {contents.map((content) => (
             <ArticleCard key={content.id} post={content} />

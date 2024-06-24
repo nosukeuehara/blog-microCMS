@@ -12,9 +12,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <HomeIcon />
         <SearchArticle />
       </div>
-      <div className="text-center mb-4">
-        <Categories />
-      </div>
       <div className="flex-1 flex flex-col">
         <div className="flex-1 mb-8">
           <main>{children}</main>
