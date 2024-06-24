@@ -1,7 +1,4 @@
-import { Blog } from "@/libs/microcms";
-import { parseContent } from "@/util/parseString";
 import React from "react";
-import SuggestList from "./SuggestList";
 
 const Modal = ({ children }: { children: React.ReactNode }) => {
   return (

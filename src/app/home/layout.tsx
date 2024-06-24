@@ -1,8 +1,9 @@
 import SearchArticle from "@/app/components/SearchField";
-import Categories from "@/app/components/Categories";
 import Footer from "@/app/components/Footer";
-import HomeIcon from "@/app/components/HomeIcon";
-import React from "react";
+import HomeIcon from "../components/HomeIcon";
+import Categories from "../components/Categories";
+
+
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -11,12 +12,15 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <HomeIcon />
         <SearchArticle />
       </div>
+      <div className="text-center mb-4">
+        <Categories />
+      </div>
       <div className="flex-1 flex flex-col">
-        <div className="flex-1">
+        <div className="flex-1 mb-8">
           <main>{children}</main>
         </div>
       </div>
-      <div className="fixed bottom-0 left-0 right-0 bg-white">
+      <div className="mt-auto bg-white w-full">
         <Footer />
       </div>
     </div>

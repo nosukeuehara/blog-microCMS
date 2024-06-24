@@ -12,7 +12,7 @@ const ArticleCard = ({ post }: ArticleProps) => {
     <ul>
       <li key={post.id} className="mb-4 mt-2">
         <Link
-          href={`/article/${post.id}`}
+          href={`/home/${post.id}`}
           className="block hover:shadow-2xl transition-shadow duration-300"
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

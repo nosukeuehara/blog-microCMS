@@ -8,7 +8,7 @@ interface HomeIconProps {
 
 const HomeIcon = () => {
   return (
-    <Link href="/article" className=" flex font-bold text-lg text-blue-700 p-4">
+    <Link href="/home" className=" flex font-bold text-lg text-blue-700 p-4">
       Wonder Cloud
     </Link>
   );

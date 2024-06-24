@@ -5,7 +5,6 @@ import { useState, ChangeEventHandler, useEffect } from "react";
 import Modal from "./Modal";
 import { parseContent } from "@/util/parseString";
 import SuggestList from "./SuggestList";
-import { revalidate } from "../article/(home)/page";
 
 function SearchField() {
   const [articles, setArticles] = useState<Blog[] | undefined>();
