@@ -1,4 +1,3 @@
-import { Blog } from "@/libs/microcms";
 import { parseContent } from "@/util/parseString";
 import Link from "next/link";
 import React from "react";
