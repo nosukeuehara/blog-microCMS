@@ -11,17 +11,17 @@ const Categories = async ({ categoryId }: { categoryId?: string }) => {
     );
   }
   return (
+
     <div className=" flex flex-col items-center">
       <ul className=" flex justify-between">
         {categories.map((category) => (
           <li key={category.id} className="mb-2">
             <Link
               href={`/home/category/${category.id}`}
-              className={`${
-                categoryId === category.id
+              className={`${categoryId === category.id
                   ? " font-bold text-slate-500 hover:text-slate-600 m-3"
                   : ""
-              }text-slate-500 hover:text-slate-600 m-3`}
+                }text-slate-500 hover:text-slate-600 m-3`}
             >
               {`#${category.name}`}
             </Link>

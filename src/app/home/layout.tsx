@@ -1,8 +1,7 @@
-import SearchArticle from "@/app/components/SearchArticles";
-import Footer from "@/app/components/Footer";
 import HomeIcon from "../components/HomeIcon";
 import Header from "../components/Header";
 import SearchArticles from "@/app/components/SearchArticles";
+import Footer from "../Footer";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
