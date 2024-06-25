@@ -1,7 +1,6 @@
 import { Blog, getDetail, getList } from "@/libs/microcms";
 import { notFound } from "next/navigation";
 import parse from "html-react-parser";
-import Categories from "@/app/components/Categories";
 
 export async function generateStaticParams() {
   const { contents } = await getList<Blog>("blogs");
@@ -21,9 +20,6 @@ export default async function StaticDetailPage({
   params: { postId: string };
 }) {
   const post = await getDetail<Blog>("blogs", postId);
-
-  // ページの生成された時間を取得
-  const time = new Date().toLocaleString();
 
   if (!post) {
     notFound();
