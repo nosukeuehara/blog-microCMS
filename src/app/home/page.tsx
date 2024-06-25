@@ -1,6 +1,6 @@
 import ArticleCard from "@/app/components/ArticleCard";
 import { Blog, getList } from "@/libs/microcms";
-import Categories from "../Categories";
+import Categories from "../components/Categories";
 
 
 export const revalidate = 10;
