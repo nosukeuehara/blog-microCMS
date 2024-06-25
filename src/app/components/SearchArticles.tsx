@@ -26,8 +26,6 @@ function SearchArticles() {
     fetchData();
   }, []);
 
-  console.log(isInputFocused);
-
   const handleSearchArticles = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setQuery(value);
