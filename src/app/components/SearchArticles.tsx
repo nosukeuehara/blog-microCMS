@@ -6,7 +6,6 @@ import Modal from "./Modal";
 import { parseContent } from "@/util/parseString";
 import SuggestList from "./SuggestList";
 import React from "react";
-import { useRouter } from "next/navigation";
 
 function SearchArticles() {
   const [articles, setArticles] = useState<Blog[] | undefined>();
@@ -45,13 +44,13 @@ function SearchArticles() {
       <div className="flex items-center justify-end px-3">
         <input
           ref={inputRef}
-          type="text"
+          type="search"
           value={query}
           onFocus={() => setIsInputFocused(true)}
           onBlur={() => setIsInputFocused(false)}
           onChange={handleSearchArticles}
           placeholder="Search"
-          className="px-5 focus:outline-none focus:ring-1 focus:w-4/6 focus:ring-blue-700 rounded-full w-8 sm:w-36 h-8 bg-slate-200 text-sm"
+          className="px-5 focus:outline-none focus:ring-1 focus:w-4/6 focus:ring-blue-700 rounded-full w-full sm:w-36 h-8 bg-slate-200 text-sm"
         />
       </div>
       {isInputFocused && suggestionsList !== undefined && (
