@@ -9,7 +9,7 @@ import React from "react";
 
 function SearchArticles() {
   const [articles, setArticles] = useState<Blog[] | undefined>();
-  const [suggestionsList, setSuggetionsList] = useState<Blog[] | undefined>();
+  const [suggestionsList, setSuggestionsList] = useState<Blog[] | undefined>();
   const [query, setQuery] = useState<string>("");
   const [isInputFocused, setIsInputFocused] = useState(false);
   const inputRef = React.useRef<HTMLInputElement | null>(null);
@@ -30,12 +30,12 @@ function SearchArticles() {
     setQuery(value);
 
     if (value === "") {
-      setSuggetionsList(undefined);
+      setSuggestionsList(undefined);
     } else {
       const targetArticles = articles?.filter((article) =>
         parseContent(article.content).includes(value)
       );
-      setSuggetionsList(targetArticles);
+      setSuggestionsList(targetArticles);
     }
   };
 
@@ -47,6 +47,10 @@ function SearchArticles() {
           type="search"
           value={query}
           onFocus={() => setIsInputFocused(true)}
+          // onBlurはフォーカスが外れたときに呼ばれる関数なので
+          // 別アクションが起因でフォーカスを「外す」場合には使えない。
+          // よってDOMを取得しておくことで外部のアクション実行時にフォーカスを外す事ができ
+          //よって以下の関数が発火してModalを閉じる。
           onBlur={() => setIsInputFocused(false)}
           onChange={handleSearchArticles}
           placeholder="Search"
@@ -56,6 +60,7 @@ function SearchArticles() {
       {isInputFocused && suggestionsList !== undefined && (
         <Modal modalOpen={isInputFocused}>
           <SuggestList
+            // TODO : 関数名の検討・修正
             handleBlur={() => {
               setIsInputFocused(false);
               inputRef.current!.blur();
