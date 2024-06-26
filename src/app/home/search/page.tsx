@@ -20,7 +20,9 @@ const Page = ({ searchParams }: { searchParams: { q: string } }) => {
       setArticles(articles);
     };
     fetchData();
+    console.log("フェッチされた");
   }, [searchParams.q]);
+  console.log("描画されました", searchParams.q);
 
   const filteresArticles = articles?.filter((article) => {
     return parseContent(article.content).includes(searchParams.q);

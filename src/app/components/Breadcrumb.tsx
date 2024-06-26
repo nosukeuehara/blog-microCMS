@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 
 const Breadcrumb = ({ pathname }: { pathname: string }) => {
   const separateSegments = pathname.split("/").filter((segment) => segment);

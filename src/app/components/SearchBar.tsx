@@ -1,5 +1,6 @@
 "use client";
 
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import React from "react";
 
 const SearchBar = ({
@@ -9,11 +10,14 @@ const SearchBar = ({
 }: {
   query: string;
   path: string;
-  router: any;
+  router: AppRouterInstance;
 }) => {
   const handlePageNavigation = (query: string) => {
-    query === "" ? router.push(path) : router.push(`${path}?q=${query}`);
+    query === ""
+      ? window.history.replaceState(null, "", path)
+      : router.replace(`${path}?q  =${query}`);
   };
+
   return (
     <div className="felx justify-center mx-10">
       <p className=" text-xl font-semibold text-black pb-2">
