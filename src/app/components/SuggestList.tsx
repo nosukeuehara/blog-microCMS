@@ -3,7 +3,7 @@ import React from "react";
 import SuggestedItem from "./SuggestedItem";
 
 export interface SuggestListProps {
-  handleBlur: () => void;
+  blurInput: () => void;
   suggestions: Blog[];
   keyword: string;
 }
@@ -12,7 +12,7 @@ const SuggestList = (props: SuggestListProps) => {
   if (props.suggestions.length !== 0) {
     return (
       <SuggestedItem
-        handleBlur={props.handleBlur}
+        blurInput={props.blurInput}
         suggestions={props.suggestions}
         keyword={props.keyword}
       />

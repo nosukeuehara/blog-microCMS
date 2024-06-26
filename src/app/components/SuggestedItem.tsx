@@ -10,7 +10,7 @@ const SuggestedItem = (props: SuggestListProps) => {
         return (
           <div
             onClick={() => {
-              props.handleBlur();
+              props.blurInput();
             }}
             key={item.id}
             className="bg-slate-50 border-slate-100 border shadow-xl rounded-md px-3 py-2 mx-3 my-1"
@@ -33,7 +33,7 @@ const SuggestedItem = (props: SuggestListProps) => {
         href={`/home/search?q=${props.keyword}`}
         className=" flex justify-center pt-3 pb-3 text-xs text-slate-400 underline underline-offset-1 cursor-pointer hover:font-bold"
         onClick={() => {
-          props.handleBlur();
+          props.blurInput();
         }}
       >
         See all result
