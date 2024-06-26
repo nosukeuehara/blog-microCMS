@@ -30,7 +30,7 @@ const SuggestedItem = (props: SuggestListProps) => {
         );
       })}
       <Link
-        href={`/home/search?q=${props.keyword}`}
+        href={`/home/search?query=${props.keyword}`}
         className=" flex justify-center pt-3 pb-3 text-xs text-slate-400 underline underline-offset-1 cursor-pointer hover:font-bold"
         onClick={() => {
           props.blurInput();

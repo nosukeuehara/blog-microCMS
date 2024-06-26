@@ -5,45 +5,56 @@ import SearchBar from "@/app/components/SearchBar";
 import { Blog } from "@/libs/microcms";
 import { parseContent } from "@/util/parseString";
 import { usePathname, useRouter } from "next/navigation";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, cache, useCallback, useEffect, useState } from "react";
 
-const Page = ({ searchParams }: { searchParams: { q: string } }) => {
-  const router = useRouter();
+const Page = ({ searchParams }: { searchParams: { query: string } }) => {
   const path = usePathname();
-  const [articles, setArticles] = useState<Blog[]>();
+  const [articles, setArticles] = useState<Blog[] | null>([]);
+
   useEffect(() => {
     const fetchData = async () => {
-      const contents = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/article/top`
-      );
-      const articles: Blog[] = await contents.json();
-      setArticles(articles);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/search`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query: searchParams.query }),
+      });
+      if (res.status === 204) {
+        setArticles(null)
+      } else {
+        const data = await res.json();
+        setArticles(data);
+      }
     };
     fetchData();
-    console.log("フェッチされた");
-  }, [searchParams.q]);
-  console.log("描画されました", searchParams.q);
+  }, [searchParams.query]);
 
-  const filteresArticles = articles?.filter((article) => {
-    return parseContent(article.content).includes(searchParams.q);
-  });
-
-  return (
-    <div className="">
+  if (articles === null) {
+    return (
       <div>
-        <SearchBar query={searchParams.q} path={path} router={router} />
+        <div>
+          <SearchBar query={searchParams.query} path={path} />
+        </div>
+        <div className=" flex justify-center items-center mt-16">no articles</div>
       </div>
-      {filteresArticles?.map((article) => {
-        return (
-          <div key={article.id} className=" flex flex-col items-center">
+    )
+  } else {
+    return (
+      <div>
+        <div>
+          <SearchBar query={searchParams.query} path={path} />
+        </div>
+        {articles.map((article) => (
+          <div key={article.id} className="flex flex-col items-center">
             <Suspense>
               <ArticleCard post={article} />
             </Suspense>
           </div>
-        );
-      })}
-    </div>
-  );
+        ))}
+      </div>
+    );
+  }
 };
 
 export default Page;

@@ -58,7 +58,7 @@ function SearchArticles() {
             filteringArticles(e);
           }}
           placeholder="Search"
-          className="px-5 focus:outline-none focus:ring-1 focus:w-4/6 focus:ring-blue-700 rounded-full w-full sm:w-36 h-8 bg-slate-200 text-sm"
+          className="px-5 focus:outline-none focus:ring-1 focus:ring-blue-700 rounded-full sm:w-40 h-8 bg-slate-200 text-sm"
         />
       </div>
       {isInputFocused && suggestions !== undefined && (

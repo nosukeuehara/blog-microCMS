@@ -1,25 +1,24 @@
 "use client";
 
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const SearchBar = ({
   query,
   path,
-  router,
 }: {
   query: string;
   path: string;
-  router: AppRouterInstance;
 }) => {
+  const router = useRouter()
   const handlePageNavigation = (query: string) => {
     query === ""
-      ? window.history.replaceState(null, "", path)
-      : router.replace(`${path}?q  =${query}`);
+      ? router.replace(`${path}`)
+      : router.replace(`${path}?query=${query}`)
   };
 
   return (
-    <div className="felx justify-center mx-10">
+    <div className=" justify-center mx-10">
       <p className=" text-xl font-semibold text-black pb-2">
         Search the article
       </p>
