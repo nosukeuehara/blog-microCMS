@@ -11,26 +11,38 @@ const Page = ({ searchParams }: { searchParams: { query: string } }) => {
   const path = usePathname();
   const [articles, setArticles] = useState<Blog[] | null>([]);
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/search`, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ query: searchParams.query }),
+  //     });
+  //     if (res.status === 204) {
+  //       setArticles(null)
+  //     } else {
+  //       const data = await res.json();
+  //       setArticles(data);
+  //     }
+  //   };
+  //   fetchData();
+  // }, [searchParams.query]);
+
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/search`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ query: searchParams.query }),
-      });
-      if (res.status === 204) {
-        setArticles(null)
-      } else {
-        const data = await res.json();
-        setArticles(data);
-      }
+      const contents = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/article/top`);
+
+      const articles: Blog[] = await contents.json();
+      setArticles(articles);
     };
     fetchData();
-  }, [searchParams.query]);
+  }, []);
 
-  if (articles === null) {
+  // ここの修正
+  if (articles.length === 0 || searchParams.query === "" || articles === null) {
+    console.log('OKKKKOKOKOKOK', articles.length)
     return (
       <div>
         <div>
@@ -45,13 +57,19 @@ const Page = ({ searchParams }: { searchParams: { query: string } }) => {
         <div>
           <SearchBar query={searchParams.query} path={path} />
         </div>
-        {articles.map((article) => (
-          <div key={article.id} className="flex flex-col items-center">
-            <Suspense>
-              <ArticleCard post={article} />
-            </Suspense>
-          </div>
-        ))}
+        {
+          articles
+            .filter(article => parseContent(article.content).includes(searchParams.query))
+            .map(article => {
+              return (
+                <div key={article.id} className="flex flex-col items-center">
+                  <Suspense>
+                    <ArticleCard post={article} />
+                  </Suspense>
+                </div>
+              )
+            })
+        }
       </div>
     );
   }
