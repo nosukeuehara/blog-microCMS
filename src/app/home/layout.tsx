@@ -10,7 +10,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <HomeIcon />
         <SearchArticles />
       </Header>
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col sm:mx-10">
         <div className="flex-1 mb-8">
           <main>{children}</main>
         </div>

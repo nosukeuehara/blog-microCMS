@@ -5,8 +5,10 @@ import { useState, useEffect } from "react";
 import Modal from "./Modal";
 import SuggestList from "./SuggestList";
 import React from "react";
+import { parseContent } from "@/util/parseString";
 
 function SearchArticles() {
+  const [articles, setArticles] = useState<Blog[] | undefined>();
   const [suggestions, setSuggestions] = useState<Blog[] | undefined>();
   const [query, setQuery] = useState<string>("");
   const [isInputFocused, setIsInputFocused] = useState(false);
@@ -14,15 +16,28 @@ function SearchArticles() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL!}/api/search?q=${query}`
+      const contents = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/article/top`
       );
-      const data = await res.json();
-
-      setSuggestions(data);
+      const articles: Blog[] = await contents.json();
+      setArticles(articles);
     };
     fetchData();
-  }, [query]);
+  }, []);
+
+  const filteringArticles = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setQuery(value);
+
+    if (value === "") {
+      setSuggestions(undefined);
+    } else {
+      const targetArticles = articles?.filter((article) =>
+        parseContent(article.content).includes(value)
+      );
+      setSuggestions(targetArticles);
+    }
+  };
 
   return (
     <div className="py-3">
@@ -36,8 +51,12 @@ function SearchArticles() {
           // 別アクションが起因でフォーカスを「外す」場合には使えない。
           // よってDOMを取得しておくことで外部のアクション実行時にフォーカスを外す事ができ
           //よって以下の関数が発火してModalを閉じる。
-          onBlur={() => setIsInputFocused(false)}
-          onChange={(e) => setQuery(e.target.value)}
+          onBlur={() => {
+            setIsInputFocused(false);
+          }}
+          onChange={(e) => {
+            filteringArticles(e);
+          }}
           placeholder="Search"
           className="px-5 focus:outline-none focus:ring-1 focus:w-4/6 focus:ring-blue-700 rounded-full w-full sm:w-36 h-8 bg-slate-200 text-sm"
         />
