@@ -8,9 +8,6 @@ export default function Tamplete({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="">
-      <div className="">
-        <Breadcrumb pathname={pathname} />
-      </div>
       <div>{children}</div>
     </div>
   );
