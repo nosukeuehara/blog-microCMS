@@ -1,11 +1,11 @@
 "use client";
 
-import { Blog } from "@/libs/microcms";
 import { useState, useEffect } from "react";
 import Modal from "./Modal";
 import SuggestList from "./SuggestList";
 import React from "react";
 import { parseContent } from "@/util/parseString";
+import { Blog } from "@/type/types";
 
 function SearchArticles() {
   const [articles, setArticles] = useState<Blog[] | undefined>();
@@ -53,6 +53,8 @@ function SearchArticles() {
           //よって以下の関数が発火してModalを閉じる。
           onBlur={() => {
             setIsInputFocused(false);
+            setQuery("");
+            setSuggestions(undefined);
           }}
           onChange={(e) => {
             filteringArticles(e);

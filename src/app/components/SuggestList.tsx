@@ -1,9 +1,10 @@
-import { Blog } from "@/libs/microcms";
 import React from "react";
 import SuggestedItem from "./SuggestedItem";
+import { Blog } from "@/type/types";
 
 export interface SuggestListProps {
   blurInput: () => void;
+
   suggestions: Blog[];
   keyword: string;
 }
