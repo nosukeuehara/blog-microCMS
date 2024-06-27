@@ -1,4 +1,5 @@
-import { Category, fetchCategories } from "@/libs/microcms";
+import { fetchCategories } from "@/libs/microcms";
+import { Category } from "@/type/types";
 import Link from "next/link";
 
 const Categories = async ({ categoryId }: { categoryId?: string }) => {
@@ -19,9 +20,9 @@ const Categories = async ({ categoryId }: { categoryId?: string }) => {
               href={`/home/category/${category.id}`}
               className={`${
                 categoryId === category.id
-                  ? " font-bold text-slate-500 hover:text-slate-600 m-3 text-sm"
+                  ? " text-slate-600 font-extrabold m-3 text-sm"
                   : ""
-              }text-slate-500 hover:text-slate-600 m-3 text-sm`}
+              } text-slate-500 hover:text-slate-600 hover:font-extrabold m-3 text-sm`}
             >
               {`#${category.name}`}
             </Link>
