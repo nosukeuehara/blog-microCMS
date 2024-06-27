@@ -1,6 +1,7 @@
-import { Blog, getList } from "@/libs/microcms";
+import { getList } from "@/libs/microcms";
 import { NextRequest, NextResponse } from "next/server";
 import { parseContent } from "@/util/parseString";
+import { Blog } from "@/type/types";
 
 export async function POST(req: NextRequest, res: Response) {
   const searchParams = await req.json();
