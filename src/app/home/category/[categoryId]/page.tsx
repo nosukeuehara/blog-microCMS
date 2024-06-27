@@ -1,6 +1,7 @@
-import { Blog, filterCategories, getList } from "@/libs/microcms";
+import { filterCategories, getList } from "@/libs/microcms";
 import ArticleCard from "@/app/components/ArticleCard";
 import Categories from "@/app/components/Categories";
+import { Blog } from "@/type/types";
 ;
 
 export const revalidate = 10;
