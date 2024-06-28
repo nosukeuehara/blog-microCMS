@@ -37,7 +37,7 @@ export default async function StaticDetailPage({
     return (
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="mb-6">
-          <h1 className="text-5xl font-sans text-center mt-3 font-bold">
+          <h1 className="text-5xl font-sans text-center mt-3 font-bold text-slate-600">
             {highlightedTitle}
           </h1>
           <p className="text-center text-gray-500 mt-2">
@@ -49,7 +49,6 @@ export default async function StaticDetailPage({
           </p>
         </div>
         <div className="flex justify-center">
-          {/* TODO: フォーマット関数にハイライト用の機能追加 */}
           {/* <div
             className={styles.content}
             dangerouslySetInnerHTML={{
@@ -64,7 +63,7 @@ export default async function StaticDetailPage({
     return (
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="mb-6">
-          <h1 className="text-5xl font-sans text-center mt-3 font-bold">
+          <h1 className="text-5xl font-sans text-center mt-3 font-bold text-slate-600">
             {post.title}
           </h1>
           <p className="text-center text-gray-500 mt-2">
