@@ -16,7 +16,6 @@ const highlightText = (post: Blog, targetWords: string | undefined) => {
       <span key={`${index}`}>{part}</span>
     )
   );
-  console.log("ハイライト処理");
   const highlightedContent = _content.split(regex).map((part, index) =>
     regex.test(part) ? (
       <span key={`content-${index}`} className=" bg-fuchsia-300">
