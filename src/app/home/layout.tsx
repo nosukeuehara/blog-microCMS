@@ -13,6 +13,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       </Header>
       <div className="flex-1 flex flex-col sm:mx-10">
         <div className="flex-1 mb-8">
+          {/* Suspenseバウンダリーを使用することでusePathname()を使ってる子要素のレンダリングのみをクライアントサイドレンダリングに変更できる*/}
           <Suspense>
             <main>{children}</main>
           </Suspense>
