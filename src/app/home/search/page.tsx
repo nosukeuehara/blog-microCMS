@@ -4,30 +4,12 @@ import SuggestedArticleCard from "@/app/components/SuggestedArticleCard";
 import { Blog } from "@/type/types";
 import { parseContent } from "@/util/parseString";
 import { usePathname, useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 const Page = () => {
   const path = usePathname();
-  const [articles, setArticles] = useState<Blog[] | undefined>([]);
+  const [articles, setArticles] = useState<Blog[] | null>([]);
   const query = useSearchParams().get("query");
-
-  const handlePageNavigation = (query: string) => {
-    query === ""
-      ? window.history.replaceState({}, "", path)
-      : window.history.pushState(
-        { query: query },
-        "",
-        `${path}?query=${query}`
-      );
-  };
-
-  useEffect(() => {
-    if (query !== null) {
-      handlePageNavigation(query);
-    } else {
-      handlePageNavigation("");
-    }
-  }, [query]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +23,28 @@ const Page = () => {
     fetchData();
   }, []);
 
-  if (query === null || articles === undefined) {
+  const handlePageNavigation = useCallback(
+    (query: string) => {
+      query === ""
+        ? window.history.replaceState({}, "", path)
+        : window.history.pushState(
+            { query: query },
+            "",
+            `${path}?query=${query}`
+          );
+    },
+    [path]
+  );
+
+  useEffect(() => {
+    if (query !== null) {
+      handlePageNavigation(query);
+    } else {
+      handlePageNavigation("");
+    }
+  }, [handlePageNavigation, query]);
+
+  if (query === null || articles === null) {
     return (
       <div>
         <div>
