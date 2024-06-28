@@ -4,8 +4,8 @@ import SearchBar from "@/app/components/SearchBar";
 import SuggestedArticleCard from "@/app/components/SuggestedArticleCard";
 import { Blog } from "@/type/types";
 import { parseContent } from "@/util/parseString";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import React, { Suspense, useEffect, useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 const Page = () => {
   const path = usePathname();
@@ -64,9 +64,7 @@ const Page = () => {
           .map((article) => {
             return (
               <div key={article.id} className="flex flex-col items-center">
-                <Suspense>
-                  <SuggestedArticleCard post={article} targetWords={query} />
-                </Suspense>
+                <SuggestedArticleCard post={article} targetWords={query} />
               </div>
             );
           })}

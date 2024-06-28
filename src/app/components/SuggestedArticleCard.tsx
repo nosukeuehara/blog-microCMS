@@ -1,11 +1,10 @@
 import { ArticleProps } from "@/type/types";
-import hightlightText from "@/util/hightlightText";
-import { parseContent } from "@/util/parseString";
+import highlightText from "@/util/highlightText";
 import Link from "next/link";
 import React from "react";
 
 const SuggestedArticleCard = ({ post, targetWords }: ArticleProps) => {
-  const { highlightedTitle, highlightedContent } = hightlightText(
+  const { highlightedTitle, highlightedContent } = highlightText(
     post,
     targetWords
   );

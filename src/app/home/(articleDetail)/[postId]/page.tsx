@@ -2,7 +2,7 @@ import { getDetail, getList } from "@/libs/microcms";
 import { notFound } from "next/navigation";
 import parse from "html-react-parser";
 import { Blog } from "@/type/types";
-import hightlightText from "@/util/hightlightText";
+import highlightText from "@/util/highlightText";
 
 export async function generateStaticParams() {
   const { contents } = await getList<Blog>("blogs");
@@ -27,7 +27,7 @@ export default async function StaticDetailPage({
     notFound();
   }
 
-  const { highlightedTitle, highlightedContent } = hightlightText(
+  const { highlightedTitle, highlightedContent } = highlightText(
     post,
     _highlight
   );

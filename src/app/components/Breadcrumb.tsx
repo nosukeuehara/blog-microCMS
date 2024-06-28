@@ -5,7 +5,6 @@ import React from "react";
 
 const Breadcrumb = ({ pathname }: { pathname: string }) => {
   const separateSegments = pathname.split("/").filter((segment) => segment);
-  console.log(separateSegments, pathname);
   return (
     <nav aria-label="Breadcrumb" className="flex">
       <div className="flex overflow-hidden rounded-none  text-gray-600">

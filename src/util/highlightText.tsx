@@ -2,14 +2,14 @@ import React from "react";
 import { parseContent } from "./parseString";
 import { Blog } from "@/type/types";
 
-const hightlightText = (post: Blog, targetWords: string | undefined) => {
+const highlightText = (post: Blog, targetWords: string | undefined) => {
   const { title, content } = post;
   const _content = parseContent(content);
   const _title = parseContent(title);
   const regex = new RegExp(`(${targetWords})`, "gi");
   const highlightedTitle = _title.split(regex).map((part, index) =>
     regex.test(part) ? (
-      <span key={index} className=" bg-fuchsia-300">
+      <span key={`title-${index}`} className=" bg-fuchsia-300">
         {part}
       </span>
     ) : (
@@ -18,7 +18,7 @@ const hightlightText = (post: Blog, targetWords: string | undefined) => {
   );
   const highlightedContent = _content.split(regex).map((part, index) =>
     regex.test(part) ? (
-      <span key={index} className=" bg-fuchsia-300">
+      <span key={`content-${index}`} className=" bg-fuchsia-300">
         {part}
       </span>
     ) : (
@@ -28,4 +28,4 @@ const hightlightText = (post: Blog, targetWords: string | undefined) => {
   return { highlightedTitle, highlightedContent };
 };
 
-export default hightlightText;
+export default highlightText;
