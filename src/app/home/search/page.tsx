@@ -15,10 +15,10 @@ const Page = () => {
     query === ""
       ? window.history.replaceState({}, "", path)
       : window.history.pushState(
-          { query: query },
-          "",
-          `${path}?query=${query}`
-        );
+        { query: query },
+        "",
+        `${path}?query=${query}`
+      );
   };
 
   useEffect(() => {
