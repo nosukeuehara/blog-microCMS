@@ -49,6 +49,7 @@ export default async function StaticDetailPage({
           </p>
         </div>
         <div className="flex justify-center">
+          {/* TODO: フォーマット関数にハイライト用の機能追加 */}
           {/* <div
             className={styles.content}
             dangerouslySetInnerHTML={{
