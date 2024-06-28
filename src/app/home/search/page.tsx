@@ -1,5 +1,4 @@
 "use client";
-
 import SearchBar from "@/app/components/SearchBar";
 import SuggestedArticleCard from "@/app/components/SuggestedArticleCard";
 import { Blog } from "@/type/types";
@@ -16,10 +15,10 @@ const Page = () => {
     query === ""
       ? window.history.replaceState({}, "", path)
       : window.history.pushState(
-          { query: query },
-          "",
-          `${path}?query=${query}`
-        );
+        { query: query },
+        "",
+        `${path}?query=${query}`
+      );
   };
 
   useEffect(() => {
