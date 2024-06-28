@@ -27,12 +27,11 @@ export default async function StaticDetailPage({
     notFound();
   }
 
-  const { highlightedTitle, highlightedContent } = highlightText(
-    post,
-    _highlight
-  );
-
   if (_highlight !== undefined) {
+    const { highlightedTitle, highlightedContent } = highlightText(
+      post,
+      _highlight
+    );
     return (
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="mb-6">
