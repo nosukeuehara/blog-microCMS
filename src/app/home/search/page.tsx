@@ -1,5 +1,4 @@
 "use client";
-
 import SearchBar from "@/app/components/SearchBar";
 import SuggestedArticleCard from "@/app/components/SuggestedArticleCard";
 import { Blog } from "@/type/types";
