@@ -1,7 +1,7 @@
 import { filterCategories, getList } from "@/libs/microcms";
 import ArticleCard from "@/app/components/ArticleCard";
-import Categories from "@/app/components/Categories";
 import { Blog } from "@/type/types";
+import Tab from "@/app/components/Tab";
 ;
 
 export const revalidate = 10;
@@ -28,14 +28,14 @@ export default async function StaticDetailPage({
   if (contents.length === 0) {
     return (
       <div className=" flex flex-col items-center">
-        <Categories categoryId={categoryId} />
+        <Tab categoryId={categoryId} />
         <div className=" flex justify-center items-center">no articles</div>
       </div>
     );
   } else {
     return (
       <div className=" flex flex-col items-center">
-        <Categories categoryId={categoryId} />
+        <Tab categoryId={categoryId} />
 
         {contents.map((content) => (
           <ArticleCard key={content.id} post={content} />
