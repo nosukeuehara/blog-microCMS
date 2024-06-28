@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import parse from "html-react-parser";
 import { Blog } from "@/type/types";
 import highlightText from "@/util/highlightText";
+import { formatRichText } from "@/libs/utils";
+import styles from "./index.module.css";
 
 export async function generateStaticParams() {
   const { contents } = await getList<Blog>("blogs");
@@ -46,7 +48,15 @@ export default async function StaticDetailPage({
             }).format(new Date(post.createdAt))}
           </p>
         </div>
-        <div className="prose prose-lg max-w-none">{highlightedContent}</div>
+        <div className="flex justify-center">
+          {/* <div
+            className={styles.content}
+            dangerouslySetInnerHTML={{
+              __html: `${formatRichText(parse(highlightedContent))}`,
+            }}
+          /> */}
+          <div>{highlightedContent}</div>
+        </div>
       </div>
     );
   } else {
@@ -64,7 +74,14 @@ export default async function StaticDetailPage({
             }).format(new Date(post.createdAt))}
           </p>
         </div>
-        <div className="prose prose-lg max-w-none">{parse(post.content)}</div>
+        <div className="flex justify-center">
+          <div
+            className={styles.content}
+            dangerouslySetInnerHTML={{
+              __html: `${formatRichText(post.content)}`,
+            }}
+          />
+        </div>
       </div>
     );
   }
