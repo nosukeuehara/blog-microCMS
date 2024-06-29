@@ -2,9 +2,10 @@ import { ArticleProps } from "@/type/types";
 import Link from "next/link";
 import React from "react";
 
+
 const ArticleCard = ({ post }: ArticleProps) => {
   return (
-    <article className=" px-5 my-2 w-full bg-white p-4 transition hover:shadow-lg  sm:p-4 sm:max-w-2xl sm:px-14">
+    <article className=" px-5 my-2 w-full bg-slate-50 p-4 transition hover:shadow-lg  sm:p-4 sm:max-w-2xl sm:px-14">
       <Link href={`/home/${post.id}`}>
         <h3 className="mt-0.5 text-lg font-semibold text-slate-600 line-clamp-2">
           {post.title}
