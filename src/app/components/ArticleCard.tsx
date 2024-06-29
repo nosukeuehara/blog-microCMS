@@ -2,6 +2,7 @@ import { ArticleProps } from "@/type/types";
 import Link from "next/link";
 import React from "react";
 
+
 const ArticleCard = ({ post }: ArticleProps) => {
   return (
     <article className=" px-5 my-2 w-full bg-slate-50 p-4 transition hover:shadow-lg  sm:p-4 sm:max-w-2xl sm:px-14">
