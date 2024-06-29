@@ -4,7 +4,6 @@ import Footer from "../components/Footer";
 import HomeIcon from "../components/HomeIcon";
 import { Suspense } from "react";
 import Loading from "../components/Loading";
-import Tab from "../components/Tab";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
