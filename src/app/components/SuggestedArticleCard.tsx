@@ -2,6 +2,7 @@ import { ArticleProps } from "@/type/types";
 import highlightText from "@/util/highlightText";
 import Link from "next/link";
 import React from "react";
+import ArticleCardCategories from "./ArticleCardCategories";
 
 const SuggestedArticleCard = ({ post, targetWords }: ArticleProps) => {
   const { highlightedTitle, highlightedContent } = highlightText(
@@ -19,7 +20,7 @@ const SuggestedArticleCard = ({ post, targetWords }: ArticleProps) => {
           {highlightedContent}
         </span>
         <p className="mt-2 text-sm text-slate-500 whitespace-nowrap overflow-hidden text-ellipsis">
-          {post.category.name}
+          <ArticleCardCategories categories={post.categories} />
         </p>
         <p className="text-sm text-slate-600">
           {Intl.DateTimeFormat("en-US", {
