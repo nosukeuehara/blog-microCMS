@@ -62,7 +62,7 @@ export default async function StaticDetailPage({
     return (
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="mb-6">
-          <h1 className="text-5xl font-sans text-center mt-3 font-bold text-slate-600">
+          <h1 className="text-5xl font-sans text-center mt-3 font-bold text-slate-700">
             {post.title}
           </h1>
           <p className="text-center text-gray-500 mt-2">

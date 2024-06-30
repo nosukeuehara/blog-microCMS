@@ -25,18 +25,28 @@ export default async function StaticDetailPage({
   params: { categoryId: string };
 }) {
   const contents: Blog[] = await filterCategories(categoryId);
-  const categoryDictionary = contents.reduce((acc, content) => {
-    const { id, name } = content.category;
-    if (!acc[id]) {
-      acc[id] = name;
-    }
+
+  const filteredContents = contents.filter(content =>
+    content.categories.some(category => category.id === categoryId)
+  );
+
+  console.log(filteredContents);
+
+  const categoryDictionary = filteredContents.reduce((acc, content) => {
+    content.categories.forEach(({ id, name }) => {
+      if (!acc[id]) {
+        acc[id] = name;
+      }
+    });
     return acc;
   }, {} as { [key: string]: string });
-  console.log(categoryDictionary[categoryId])
 
   if (contents.length === 0) {
     return (
       <div className=" flex flex-col items-center">
+        <div>
+          <Tab categoryId={categoryId} />
+        </div>
         <div className=" flex justify-center items-center">no articles</div>
       </div>
 

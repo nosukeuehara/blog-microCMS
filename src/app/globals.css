@@ -2,3 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --main-color: rgb(51 65 85); /* #334155 */
+}

@@ -5,11 +5,8 @@ export type Blog = {
   id: string;
   title: string;
   content: string;
-  eyecatch?: MicroCMSImage;
-  category: {
-    name: string;
-    id: string;
-  };
+  eyecatch: MicroCMSImage;
+  categories: Category[];
 } & MicroCMSDate;
 
 export type Category = {
@@ -23,5 +20,5 @@ export interface MicroCMSResponse {
 
 export interface ArticleProps {
   post: Blog;
-  targetWords?: string
+  targetWords?: string;
 }
