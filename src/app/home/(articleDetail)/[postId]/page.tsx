@@ -54,7 +54,7 @@ export default async function StaticDetailPage({
               __html: `${formatRichText(parse(highlightedContent))}`,
               }}
               /> */}
-          <div>{highlightedContent}</div>
+          <div className={styles.content}>{highlightedContent}</div>
         </div>
       </div>
     );
