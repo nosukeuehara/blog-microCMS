@@ -1,6 +1,5 @@
 import { getDetail, getList } from "@/libs/microcms";
 import { notFound } from "next/navigation";
-import parse from "html-react-parser";
 import { Blog } from "@/type/types";
 import highlightText from "@/util/highlightText";
 import { formatRichText } from "@/libs/utils";
@@ -53,9 +52,9 @@ export default async function StaticDetailPage({
             className={styles.content}
             dangerouslySetInnerHTML={{
               __html: `${formatRichText(parse(highlightedContent))}`,
-            }}
-          /> */}
-          <div>{highlightedContent}</div>
+              }}
+              /> */}
+          <div className={styles.content}>{highlightedContent}</div>
         </div>
       </div>
     );
@@ -63,7 +62,7 @@ export default async function StaticDetailPage({
     return (
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="mb-6">
-          <h1 className="text-5xl font-sans text-center mt-3 font-bold text-slate-600">
+          <h1 className="text-5xl font-sans text-center mt-3 font-bold text-slate-700">
             {post.title}
           </h1>
           <p className="text-center text-gray-500 mt-2">

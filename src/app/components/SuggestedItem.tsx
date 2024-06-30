@@ -2,6 +2,7 @@ import { parseContent } from "@/util/parseString";
 import Link from "next/link";
 import React from "react";
 import { SuggestListProps } from "./SuggestList";
+import ArticleCardCategories from "./ArticleCardCategories";
 
 const SuggestedItem = (props: SuggestListProps) => {
   return (
@@ -24,7 +25,7 @@ const SuggestedItem = (props: SuggestListProps) => {
                     : parseContent(item.content).slice(0, 20) + "..."}
                 </p>
               </span>
-              <p className=" text-xs text-slate-500 font-semibold">{`#${item.category.name}`}</p>
+              <ArticleCardCategories categories={item.categories} />
             </Link>
           </div>
         );
