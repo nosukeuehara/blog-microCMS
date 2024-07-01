@@ -1,15 +1,16 @@
 import { TagType } from "@/type/types";
 import React from "react";
 
+// TODO: タグのレイアウト修正
 const ArticleCardCategories = ({ tags }: { tags: TagType[] }) => {
   return (
     <div>
       {tags.map((tag) => {
         return (
-          <span
+          <div
             className=" mx-0.5 text-sm text-slate-500 whitespace-nowrap overflow-hidden text-ellipsis"
             key={tag.id}
-          >{`#${tag.name}`}</span>
+          >{`#${tag.name}`}</div>
         );
       })}
     </div>
