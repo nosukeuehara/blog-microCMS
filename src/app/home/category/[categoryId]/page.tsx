@@ -26,11 +26,9 @@ export default async function StaticDetailPage({
 }) {
   const contents: Blog[] = await filterCategories(categoryId);
 
-  const filteredContents = contents.filter(content =>
-    content.categories.some(category => category.id === categoryId)
+  const filteredContents = contents.filter((content) =>
+    content.categories.some((category) => category.id === categoryId)
   );
-
-  console.log(filteredContents);
 
   const categoryDictionary = filteredContents.reduce((acc, content) => {
     content.categories.forEach(({ id, name }) => {
@@ -49,7 +47,6 @@ export default async function StaticDetailPage({
         </div>
         <div className=" flex justify-center items-center">no articles</div>
       </div>
-
     );
   } else {
     return (
@@ -69,7 +66,7 @@ export default async function StaticDetailPage({
             ))}
           </div>
         </div>
-      </Suspense >
+      </Suspense>
     );
   }
 }
