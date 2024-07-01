@@ -6,7 +6,7 @@ export type Blog = {
   title: string;
   content: string;
   eyecatch: MicroCMSImage;
-  categories: TagType[];
+  tags: TagType[];
 } & MicroCMSDate;
 
 export type TagType = {
@@ -21,4 +21,18 @@ export interface MicroCMSResponse {
 export interface ArticleProps {
   post: Blog;
   targetWords?: string;
+}
+
+type depthNumber = 0 | 1 | 2 | 3;
+export interface MicroCMSQueries {
+  draftKey?: string;
+  limit?: number;
+  offset?: number;
+  orders?: string;
+  fields?: string | string[];
+  q?: string;
+  depth?: depthNumber;
+  ids?: string | string[];
+  filters?: string;
+  richEditorFormat?: 'html' | 'object';
 }

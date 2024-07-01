@@ -1,13 +1,12 @@
-import { getTags } from "@/libs/microcms";
+import { getList } from "@/libs/microcms";
 import { TagType } from "@/type/types";
 import Link from "next/link";
 import React from "react";
 
 const Tag = async ({ categoryId }: { categoryId?: string }) => {
-  const { contents } = await getTags();
-  const categories: TagType[] = contents;
+  const tags = await getList<TagType>("tags");
 
-  if (!categories || categories.length === 0) {
+  if (!tags || tags.length === 0) {
     return (
       <h1 className="text-center text-xl font-semibold mt-8">No categories</h1>
     );
@@ -16,18 +15,18 @@ const Tag = async ({ categoryId }: { categoryId?: string }) => {
     <div className=" mb-2">
       <div className="sm:block">
         <nav className="flex gap-6" aria-label="Tabs">
-          {categories.map((category) => (
+          {tags.map((tag) => (
             <Link
-              key={category.id}
-              href={`/home/category/${category.id}`}
+              key={tag.id}
+              href={`/home/tag/${tag.id}`}
               className={`
                 ${
-                  categoryId === category.id
+                  categoryId === tag.id
                     ? " shrink-0  p-2 text-sm font-medium text-blue-700 "
                     : "shrink-0 p-2 text-sm font-medium text-gray-400 hover:text-blue-700 hover:cursor-pointer `"
                 }`}
             >
-              {`#${category.name}`}
+              {`#${tag.name}`}
             </Link>
           ))}
         </nav>

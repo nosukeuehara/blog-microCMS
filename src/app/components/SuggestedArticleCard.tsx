@@ -20,7 +20,7 @@ const SuggestedArticleCard = ({ post, targetWords }: ArticleProps) => {
           {highlightedContent}
         </span>
         <p className="mt-2 text-sm text-slate-500 whitespace-nowrap overflow-hidden text-ellipsis">
-          <ArticleCardCategories categories={post.categories} />
+          <ArticleCardCategories tags={post.tags} />
         </p>
         <p className="text-sm text-slate-600">
           {Intl.DateTimeFormat("en-US", {
