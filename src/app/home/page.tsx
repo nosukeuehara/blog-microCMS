@@ -1,8 +1,7 @@
 import ArticleCard from "@/app/components/ArticleCard";
 import { getList } from "@/libs/microcms";
 import { Blog } from "@/type/types";
-import Tab from "../components/Tab";
-
+import Tag from "../components/Tag";
 
 export const revalidate = 10;
 
@@ -15,7 +14,7 @@ export default async function StaticPage() {
 
   return (
     <div className=" flex flex-col items-center">
-      <Tab />
+      <Tag />
       {contents.map((post) => (
         <ArticleCard key={post.id} post={post} />
       ))}

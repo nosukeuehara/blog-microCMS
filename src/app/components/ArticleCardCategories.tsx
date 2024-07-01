@@ -1,7 +1,7 @@
-import { Tag } from "@/type/types";
+import { TagType } from "@/type/types";
 import React from "react";
 
-const ArticleCardCategories = ({ categories }: { categories: Tag[] }) => {
+const ArticleCardCategories = ({ categories }: { categories: TagType[] }) => {
   return (
     <div>
       {categories.map((category) => {

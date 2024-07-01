@@ -6,10 +6,10 @@ export type Blog = {
   title: string;
   content: string;
   eyecatch: MicroCMSImage;
-  categories: Tag[];
+  categories: TagType[];
 } & MicroCMSDate;
 
-export type Tag = {
+export type TagType = {
   id: string;
   name: string;
 } & MicroCMSDate;

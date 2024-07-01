@@ -1,11 +1,11 @@
 import { fetchCategories } from "@/libs/microcms";
-import { Tag } from "@/type/types";
+import { TagType } from "@/type/types";
 import Link from "next/link";
 import React from "react";
 
-const Tab = async ({ categoryId }: { categoryId?: string }) => {
+const Tag = async ({ categoryId }: { categoryId?: string }) => {
   const { contents } = await fetchCategories();
-  const categories: Tag[] = contents;
+  const categories: TagType[] = contents;
 
   if (!categories || categories.length === 0) {
     return (
@@ -36,4 +36,4 @@ const Tab = async ({ categoryId }: { categoryId?: string }) => {
   );
 };
 
-export default Tab;
+export default Tag;

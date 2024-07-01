@@ -1,6 +1,8 @@
-import { Tag } from "@/type/types";
+import { TagType } from "@/type/types";
 import { createClient } from "microcms-js-sdk";
 import type { MicroCMSQueries } from "microcms-js-sdk";
+
+// TODO：Reactcache関数をつかってメモ化する
 
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
@@ -42,7 +44,7 @@ export async function getDetail<T>(
 
 // ブログのカテゴリ取得
 export async function fetchCategories(queries?: MicroCMSQueries) {
-  const categories = await client.getList<Tag>({
+  const categories = await client.getList<TagType>({
     endpoint: "categories",
     queries,
   });

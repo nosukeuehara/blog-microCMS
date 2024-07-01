@@ -1,9 +1,9 @@
 import { filterCategories, getList } from "@/libs/microcms";
 import ArticleCard from "@/app/components/ArticleCard";
 import { Blog } from "@/type/types";
-import Tab from "@/app/components/Tab";
 import { Suspense } from "react";
 import Loading from "@/app/components/Loading";
+import Tag from "@/app/components/Tag";
 
 export const revalidate = 10;
 
@@ -43,7 +43,7 @@ export default async function StaticDetailPage({
     return (
       <div className=" flex flex-col items-center">
         <div>
-          <Tab categoryId={categoryId} />
+          <Tag categoryId={categoryId} />
         </div>
         <div className=" flex justify-center items-center">no articles</div>
       </div>
@@ -54,7 +54,7 @@ export default async function StaticDetailPage({
         <div className="">
           <div className=" flex flex-col items-center">
             <div>
-              <Tab categoryId={categoryId} />
+              <Tag categoryId={categoryId} />
             </div>
           </div>
           <div className=" flex flex-col items-center">
