@@ -1,10 +1,10 @@
-import { fetchCategories } from "@/libs/microcms";
+import { getTags } from "@/libs/microcms";
 import { TagType } from "@/type/types";
 import Link from "next/link";
 import React from "react";
 
 const Tag = async ({ categoryId }: { categoryId?: string }) => {
-  const { contents } = await fetchCategories();
+  const { contents } = await getTags();
   const categories: TagType[] = contents;
 
   if (!categories || categories.length === 0) {

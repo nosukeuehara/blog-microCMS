@@ -1,8 +1,9 @@
 import { TagType } from "@/type/types";
 import { createClient } from "microcms-js-sdk";
 import type { MicroCMSQueries } from "microcms-js-sdk";
+import { cache } from "react";
 
-// TODO：Reactcache関数をつかってメモ化する
+// TODO: データの再検証はオンデマンド式に変更する
 
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
@@ -19,7 +20,7 @@ export const client = createClient({
 });
 
 // ブログ一覧を取得
-export async function getList<T>(endpoint: string, queries?: MicroCMSQueries) {
+async function _getList<T>(endpoint: string, queries?: MicroCMSQueries) {
   const listData = await client.getList<T>({
     endpoint,
     queries,
@@ -27,8 +28,11 @@ export async function getList<T>(endpoint: string, queries?: MicroCMSQueries) {
   return listData;
 }
 
+// リクエストのキャッシュ
+export const getList = cache(_getList)
+
 // ブログの詳細を取得
-export async function getDetail<T>(
+async function _getDetail<T>(
   endpoint: string,
   contentId: string,
   queries?: MicroCMSQueries
@@ -42,8 +46,11 @@ export async function getDetail<T>(
   return detailData;
 }
 
+// リクエストのキャッシュ
+export const getDetail = _getDetail
+
 // ブログのカテゴリ取得
-export async function fetchCategories(queries?: MicroCMSQueries) {
+export async function _getTags(queries?: MicroCMSQueries) {
   const categories = await client.getList<TagType>({
     endpoint: "categories",
     queries,
@@ -52,11 +59,14 @@ export async function fetchCategories(queries?: MicroCMSQueries) {
   return categories;
 }
 
-export async function filterCategories(categoryId: string) {
+// リクエストのキャッシュ
+export const getTags = cache(_getTags)
+
+export async function getSpecificTags(categoryId: string) {
   const { contents } = await fetch(
     `https://${process.env
       .MICROCMS_SERVICE_DOMAIN!}.microcms.io/api/v1/blogs?filters=categories[contains]${categoryId}`,
-    { headers: { "X-MICROCMS-API-KEY": process.env.MICROCMS_API_KEY! } }
+    { headers: { "X-MICROCMS-API-KEY": process.env.MICROCMS_API_KEY! }, next: { revalidate: 10 } }
   ).then((result) => result.json());
   return contents;
 }

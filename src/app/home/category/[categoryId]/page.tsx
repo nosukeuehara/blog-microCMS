@@ -1,11 +1,9 @@
-import { filterCategories, getList } from "@/libs/microcms";
+import { getSpecificTags, getList } from "@/libs/microcms";
 import ArticleCard from "@/app/components/ArticleCard";
 import { Blog } from "@/type/types";
 import { Suspense } from "react";
 import Loading from "@/app/components/Loading";
 import Tag from "@/app/components/Tag";
-
-export const revalidate = 10;
 
 export async function generateStaticParams() {
   const { contents } = await getList<Blog>("blogs");
@@ -24,7 +22,7 @@ export default async function StaticDetailPage({
 }: {
   params: { categoryId: string };
 }) {
-  const contents: Blog[] = await filterCategories(categoryId);
+  const contents: Blog[] = await getSpecificTags(categoryId);
 
   const filteredContents = contents.filter((content) =>
     content.categories.some((category) => category.id === categoryId)
@@ -48,25 +46,24 @@ export default async function StaticDetailPage({
         <div className=" flex justify-center items-center">no articles</div>
       </div>
     );
-  } else {
-    return (
-      <Suspense fallback={<Loading />}>
-        <div className="">
-          <div className=" flex flex-col items-center">
-            <div>
-              <Tag categoryId={categoryId} />
-            </div>
-          </div>
-          <div className=" flex flex-col items-center">
-            <div className=" text-sm text-slate-600 mb-3 mt-3">
-              {`"#${categoryDictionary[categoryId]}"の記事一覧`}
-            </div>
-            {contents.map((content) => (
-              <ArticleCard key={content.id} post={content} />
-            ))}
+  }
+  return (
+    <Suspense fallback={<Loading />}>
+      <div className="">
+        <div className=" flex flex-col items-center">
+          <div>
+            <Tag categoryId={categoryId} />
           </div>
         </div>
-      </Suspense>
-    );
-  }
+        <div className=" flex flex-col items-center">
+          <div className=" text-sm text-slate-600 mb-3 mt-3">
+            {`"#${categoryDictionary[categoryId]}"の記事一覧`}
+          </div>
+          {contents.map((content) => (
+            <ArticleCard key={content.id} post={content} />
+          ))}
+        </div>
+      </div>
+    </Suspense>
+  );
 }

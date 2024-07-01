@@ -3,8 +3,6 @@ import { getList } from "@/libs/microcms";
 import { Blog } from "@/type/types";
 import Tag from "../components/Tag";
 
-export const revalidate = 10;
-
 export default async function StaticPage() {
   const { contents } = await getList<Blog>("blogs");
 
