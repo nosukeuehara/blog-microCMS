@@ -1,11 +1,11 @@
-import { fetchCategories } from '@/libs/microcms';
-import { Category } from '@/type/types';
-import Link from 'next/link';
-import React from 'react'
+import { fetchCategories } from "@/libs/microcms";
+import { Tag } from "@/type/types";
+import Link from "next/link";
+import React from "react";
 
 const Tab = async ({ categoryId }: { categoryId?: string }) => {
   const { contents } = await fetchCategories();
-  const categories: Category[] = contents;
+  const categories: Tag[] = contents;
 
   if (!categories || categories.length === 0) {
     return (
@@ -21,9 +21,10 @@ const Tab = async ({ categoryId }: { categoryId?: string }) => {
               key={category.id}
               href={`/home/category/${category.id}`}
               className={`
-                ${categoryId === category.id
-                  ? " shrink-0  p-2 text-sm font-medium text-blue-700 "
-                  : "shrink-0 p-2 text-sm font-medium text-gray-400 hover:text-blue-700 hover:cursor-pointer `"
+                ${
+                  categoryId === category.id
+                    ? " shrink-0  p-2 text-sm font-medium text-blue-700 "
+                    : "shrink-0 p-2 text-sm font-medium text-gray-400 hover:text-blue-700 hover:cursor-pointer `"
                 }`}
             >
               {`#${category.name}`}
@@ -32,7 +33,7 @@ const Tab = async ({ categoryId }: { categoryId?: string }) => {
         </nav>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Tab
+export default Tab;

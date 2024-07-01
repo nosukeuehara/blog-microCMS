@@ -1,4 +1,4 @@
-import { Category } from "@/type/types";
+import { Tag } from "@/type/types";
 import { createClient } from "microcms-js-sdk";
 import type { MicroCMSQueries } from "microcms-js-sdk";
 
@@ -42,7 +42,7 @@ export async function getDetail<T>(
 
 // ブログのカテゴリ取得
 export async function fetchCategories(queries?: MicroCMSQueries) {
-  const categories = await client.getList<Category>({
+  const categories = await client.getList<Tag>({
     endpoint: "categories",
     queries,
   });
