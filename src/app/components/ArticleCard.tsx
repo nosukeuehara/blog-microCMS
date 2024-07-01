@@ -4,7 +4,6 @@ import React from "react";
 import ArticleIcon from "./ArticleIcon";
 import ArticleCardCategories from "./ArticleCardCategories";
 
-
 const ArticleCard = ({ post }: ArticleProps) => {
   return (
     <article className="w-full bg-slate-50 transition hover:shadow-lg mb-4 sm:max-w-2xl">
@@ -27,7 +26,7 @@ const ArticleCard = ({ post }: ArticleProps) => {
               </p>
             </div>
             <div className="">
-              <ArticleCardCategories categories={post.categories} />
+              <ArticleCardCategories tags={post.tags} />
             </div>
           </div>
         </div>

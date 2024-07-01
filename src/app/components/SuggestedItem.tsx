@@ -25,7 +25,7 @@ const SuggestedItem = (props: SuggestListProps) => {
                     : parseContent(item.content).slice(0, 20) + "..."}
                 </p>
               </span>
-              <ArticleCardCategories categories={item.categories} />
+              <ArticleCardCategories tags={item.tags} />
             </Link>
           </div>
         );

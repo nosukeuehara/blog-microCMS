@@ -19,16 +19,16 @@ const SuggestedArticleCard = ({ post, targetWords }: ArticleProps) => {
         <span className="mt-0.5 text-sm text-slate-400 line-clamp-2">
           {highlightedContent}
         </span>
-        <p className="mt-2 text-sm text-slate-500 whitespace-nowrap overflow-hidden text-ellipsis">
-          <ArticleCardCategories categories={post.categories} />
-        </p>
-        <p className="text-sm text-slate-600">
+        <div className="mt-2 text-sm text-slate-500 whitespace-nowrap overflow-hidden text-ellipsis">
+          <ArticleCardCategories tags={post.tags} />
+        </div>
+        <div className="text-sm text-slate-600">
           {Intl.DateTimeFormat("en-US", {
             year: "numeric",
             month: "long",
             day: "numeric",
           }).format(new Date(post.createdAt))}
-        </p>
+        </div>
       </Link>
     </article>
   );

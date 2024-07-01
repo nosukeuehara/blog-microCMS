@@ -1,17 +1,20 @@
-import { Category } from '@/type/types'
-import React from 'react'
+import { TagType } from "@/type/types";
+import React from "react";
 
-const ArticleCardCategories = ({ categories }: { categories: Category[] }) => {
+// TODO: タグのレイアウト修正
+const ArticleCardCategories = ({ tags }: { tags: TagType[] }) => {
   return (
     <div>
-      {categories.map(category => {
+      {tags.map((tag) => {
         return (
-          <span className=" mx-0.5 text-sm text-slate-500 whitespace-nowrap overflow-hidden text-ellipsis"
-            key={category.id}>{`#${category.name}`}</span>
-        )
+          <div
+            className=" mx-0.5 text-sm text-slate-500 whitespace-nowrap overflow-hidden text-ellipsis"
+            key={tag.id}
+          >{`#${tag.name}`}</div>
+        );
       })}
     </div>
-  )
-}
+  );
+};
 
-export default ArticleCardCategories
+export default ArticleCardCategories;
