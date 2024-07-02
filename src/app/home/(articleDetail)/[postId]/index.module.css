@@ -10,7 +10,7 @@
   font-size: 2.4rem;
   margin-bottom: 24px;
   text-align: center;
-  font-weight: bold; /* タイトルを太めに */
+  font-weight: bold;
 }
 
 .description {
@@ -64,39 +64,39 @@
 
 .content > h1 {
   font-size: 2rem;
-  font-weight: bold; /* 太めに */
+  font-weight: bold;
   border-bottom: 1px solid var(--main-color);
   margin: 2.8rem 0 1rem;
 }
 
 .content > h2 {
   font-size: 1.6rem;
-  font-weight: bold; /* 太めに */
+  font-weight: bold;
   margin: 2.8em 0 1rem;
 }
 
 .content > h3 {
   font-size: 1.4rem;
-  font-weight: bold; /* 太めに */
+  font-weight: bold;
   margin: 2.8rem 0 1rem;
 }
 
 .content > h4 {
   font-size: 1.2rem;
-  font-weight: bold; /* 太めに */
+  font-weight: bold;
   margin: 2.8rem 0 1rem;
 }
 
 .content > h5 {
   font-size: 1.1rem;
-  font-weight: bold; /* 太めに */
+  font-weight: bold;
   margin: 2.8rem 0 1rem;
 }
 
 .content > p {
   margin: 2rem 0 0.5rem;
   line-height: 2;
-  font-weight: normal; /* 普通のフォント */
+  font-weight: normal;
 }
 
 .content > pre {
