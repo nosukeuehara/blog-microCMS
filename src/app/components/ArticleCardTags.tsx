@@ -2,7 +2,7 @@ import { TagType } from "@/type/types";
 import React from "react";
 
 // TODO: タグのレイアウト修正
-const ArticleCardCategories = ({ tags }: { tags: TagType[] }) => {
+const ArticleCardTag = ({ tags }: { tags: TagType[] }) => {
   return (
     <div>
       {tags.map((tag) => {
@@ -17,4 +17,4 @@ const ArticleCardCategories = ({ tags }: { tags: TagType[] }) => {
   );
 };
 
-export default ArticleCardCategories;
+export default ArticleCardTag;

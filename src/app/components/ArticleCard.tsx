@@ -2,7 +2,7 @@ import { ArticleProps } from "@/type/types";
 import Link from "next/link";
 import React from "react";
 import ArticleIcon from "./ArticleIcon";
-import ArticleCardCategories from "./ArticleCardCategories";
+import ArticleCardTag from "./ArticleCardTags";
 
 const ArticleCard = ({ post }: ArticleProps) => {
   return (
@@ -26,7 +26,7 @@ const ArticleCard = ({ post }: ArticleProps) => {
               </p>
             </div>
             <div className="">
-              <ArticleCardCategories tags={post.tags} />
+              <ArticleCardTag tags={post.tags} />
             </div>
           </div>
         </div>

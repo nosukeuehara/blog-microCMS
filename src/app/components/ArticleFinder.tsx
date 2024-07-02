@@ -7,7 +7,7 @@ import React from "react";
 import { parseContent } from "@/util/parseString";
 import { Blog } from "@/type/types";
 
-function SearchArticles() {
+function ArticleFinder() {
   const [articles, setArticles] = useState<Blog[] | undefined>();
   const [suggestions, setSuggestions] = useState<Blog[] | undefined>();
   const [query, setQuery] = useState<string>("");
@@ -79,4 +79,4 @@ function SearchArticles() {
   );
 }
 
-export default SearchArticles;
+export default ArticleFinder;
