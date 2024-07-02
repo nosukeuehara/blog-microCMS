@@ -30,7 +30,6 @@ export async function getDetail<Blog>(
   contentId: string,
   queries?: MicroCMSQueries
 ): Promise<Blog> {
-  console.log(`おこここここｋ ${process.env.MICROCMS_API_URL}/${endpoint}/${contentId}`)
   const article = await fetch(`${process.env.MICROCMS_API_URL}/${endpoint}/${contentId}`, {
     headers: {
       "X-MICROCMS-API-KEY": process.env.MICROCMS_API_KEY!
