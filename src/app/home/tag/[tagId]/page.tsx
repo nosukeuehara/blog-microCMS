@@ -43,7 +43,9 @@ export default async function StaticDetailPage({
         <div>
           <Tag categoryId={tagId} />
         </div>
-        <div className=" flex justify-center items-center">no articles</div>
+        <div className=" flex justify-center items-center text-slate-600">
+          no articles
+        </div>
       </div>
     );
   }

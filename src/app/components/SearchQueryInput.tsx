@@ -2,7 +2,7 @@
 
 import React from "react";
 
-const SearchBar = ({
+const SearchQueryInput = ({
   query,
   navHandler,
 }: {
@@ -26,4 +26,4 @@ const SearchBar = ({
   );
 };
 
-export default SearchBar;
+export default SearchQueryInput;

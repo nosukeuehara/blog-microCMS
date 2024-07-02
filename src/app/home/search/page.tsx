@@ -1,5 +1,5 @@
 "use client";
-import SearchBar from "@/app/components/SearchBar";
+import SearchQueryInput from "@/app/components/SearchQueryInput";
 import SuggestedArticleCard from "@/app/components/SuggestedArticleCard";
 import { Blog } from "@/type/types";
 import { parseContent } from "@/util/parseString";
@@ -48,9 +48,9 @@ const Page = () => {
     return (
       <div>
         <div>
-          <SearchBar query={""} navHandler={handlePageNavigation} />
+          <SearchQueryInput query={""} navHandler={handlePageNavigation} />
         </div>
-        <div className=" flex justify-center items-center mt-16">
+        <div className=" flex justify-center items-center mt-16  text-slate-600 ">
           no articles
         </div>
       </div>
@@ -59,7 +59,7 @@ const Page = () => {
     return (
       <div>
         <div>
-          <SearchBar query={query} navHandler={handlePageNavigation} />
+          <SearchQueryInput query={query} navHandler={handlePageNavigation} />
         </div>
         {articles
           .filter((article) => parseContent(article.content).includes(query))
