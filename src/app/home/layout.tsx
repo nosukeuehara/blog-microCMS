@@ -4,12 +4,16 @@ import HomeIcon from "../components/HomeIcon";
 import { Suspense } from "react";
 import Loading from "../components/Loading";
 import ArticleFinder from "../components/ArticleFinder";
+import Avater from "../components/Avater";
+import { SignOut } from "../components/SignOut";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header>
         <HomeIcon />
+        <Avater />
+        <SignOut />
         <ArticleFinder />
       </Header>
       <div className="flex-1 flex flex-col sm:mx-10">
