@@ -5,18 +5,6 @@ import { Suspense } from "react";
 import Loading from "@/app/components/Loading";
 import Tag from "@/app/components/Tag";
 
-export async function generateStaticParams() {
-  const articles = await getList<Blog>("blogs");
-
-  const paths = articles.map((post) => {
-    return {
-      postId: post.id,
-    };
-  });
-
-  return [...paths];
-}
-
 export default async function StaticDetailPage({
   params: { tagId },
 }: {
