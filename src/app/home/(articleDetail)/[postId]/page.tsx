@@ -5,17 +5,6 @@ import highlightText from "@/util/highlightText";
 import { formatRichText } from "@/libs/utils";
 import styles from "./index.module.css";
 
-export async function generateStaticParams() {
-  const contents = await getList<Blog>("blogs");
-  const paths = contents.map((post) => {
-    return {
-      postId: post.id,
-    };
-  });
-
-  return [...paths];
-}
-
 export default async function StaticDetailPage({
   params: { postId },
   searchParams: { _highlight },
