@@ -5,7 +5,7 @@ import { Blog } from "@/type/types";
 
 export async function POST(req: NextRequest, res: Response) {
   const searchParams = await req.json();
-  const { contents } = await getList<Blog>("blogs");
+  const contents = await getList<Blog>("blogs");
   const filteredData = contents.filter((data) =>
     parseContent(data.content).includes(searchParams.query)
   );
